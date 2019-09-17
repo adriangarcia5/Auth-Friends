@@ -23,10 +23,22 @@ handleChange = e => {
   };
 
 
+  login = e => {
+    e.preventDefault();
+    axios
+      .post('http://localhost:5000/api/login', this.state.credentials)
+      .then(res => {
+        localStorage.setItem('token', res.data.payload);
+      })
+      .then( res => console.log(res, 'res'))
+      .catch(err => console.log(err.response));
+  };
 
+
+    
     render(){
        return (
-        <form onSubmit={''}>
+        <form onSubmit={this.login}>
             <input 
             type ="text" 
             name="username"
