@@ -1,27 +1,24 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-
 import './App.css';
-import Login from './component/Login'
-import PrivateRoute from './component/PrivateRoute';
-import Friends from './component/Friends';
-
+import Login from './components/Login';
+import PrivateRoute from './components/PrivateRoute';
+import FriendsList from './components/FriendsList';
+import {BrowserRouter as Router, Redirect, Route, Link} from 'react-router-dom';
 
 function App() {
   return (
     <Router>
     <div className="App">
-      <h1>Sign Up folks</h1>
-      <Route exact path="/" component={Login} /> 
-      <Route path="/login" component={Login} />
 
-      <PrivateRoute exact path="/friends" component={Friends} />
+      <h2>App Page</h2>
+        <Link to="/login">LogIn</Link>
+        <Link to='/friendslist'>Friends List</Link>
+      <Route path="/login" component={Login} />
+      <PrivateRoute path="/friendslist" component={FriendsList} />
 
     </div>
     </Router>
-    
   );
 }
-//i<3Lambd4
 
 export default App;
