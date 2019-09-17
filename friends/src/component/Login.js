@@ -2,14 +2,18 @@ import React from 'react';
 import axios from 'axios';
 
  class Login extends React.Component {
+     constructor(props){
+         super(props)
 
-state = {
-    credentials: {
-        username: '',
-        password: ''
-    }
+         this.state = {
+            credentials: {
+                username: 'Lambda School',
+                password: 'i<3Lambd4'
+            }
+        }
+     }
 
-}
+
 
 //event change upon 
 handleChange = e => {
@@ -29,8 +33,10 @@ handleChange = e => {
       .post('http://localhost:5000/api/login', this.state.credentials)
       .then(res => {
         localStorage.setItem('token', res.data.payload);
+        this.props.history.push('/friends') //
+        console.log(this.props, 'props')
       })
-      .then( res => console.log(res, 'res'))
+      .then( res => console.log('submitted something'))
       .catch(err => console.log(err.response));
   };
 
